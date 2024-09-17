@@ -1,9 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const messages = require('./index').messages;
+
+
+router.get("/", (req, res) => {
+  res.render("new");
+});
 
 router.post('/',(req, res) => {
   const {user, message } = req.body;
+  const messages = req.app.locals.messages;
+
   const newMessage = {
     id: messages.length + 1,
     user, 
@@ -16,7 +22,9 @@ router.post('/',(req, res) => {
 })
 
 router.get('/', (req, res) => {
-  res.render("new");
+  res.render("new", {title: "Add a New Message"});
 })
+
+
 
 module.exports = router;
