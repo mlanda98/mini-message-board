@@ -1,28 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
-
-router.get("/", (req, res) => {
-  res.render("new");
-});
-
-router.post('/',(req, res) => {
+router.post('/', async (req, res) => {
   const {user, message } = req.body;
-  const messages = req.app.locals.messages;
-
-  const newMessage = {
-    id: messages.length + 1,
-    user, 
-    text: message,
-    added: new Date()
+  try {
+    const query = "INSERT INTO messages (user, text, added) VALUES ($1, $2, $3)";
+    await req.pool.query(query, [user, message, new Date()]);
+    res.redirect("/");
+  } catch (err){
+    console.error(err);
+    res.status(500).send("Error adding message");
   }
-
-  messages.push(newMessage);
-  res.redirect('/');
 })
 
 router.get('/', (req, res) => {
-  res.render("new", {title: "Add a New Message"});
+  res.render("new");
 })
 
 
