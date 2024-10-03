@@ -3,8 +3,9 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   const {user, message } = req.body;
+  console.log(req.body);
   try {
-    const query = "INSERT INTO messages (user, text, added) VALUES ($1, $2, $3)";
+    const query = 'INSERT INTO messages ("user", text, added) VALUES ($1, $2, $3)';
     await req.pool.query(query, [user, message, new Date()]);
     res.redirect("/");
   } catch (err){

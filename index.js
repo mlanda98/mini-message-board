@@ -3,6 +3,7 @@ const path = require("path");
 const indexRoutes = require
 ('./routes/index');
 const newMessageRoutes = require('./routes/newMessages');
+const messageRoutes = require('./routes/messages');
 const app = express();
 const port = process.env.PORT || 3000;
 const {Pool} = require("pg");
@@ -33,6 +34,8 @@ app.use((req, res, next) => {
 })
 app.use("/", indexRoutes);
 app.use("/new", newMessageRoutes);
+app.use("/", messageRoutes
+);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
