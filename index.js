@@ -9,14 +9,19 @@ const { Pool } = require("pg");
 require("dotenv").config();
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl:
-    process.env.NODE_ENV === "production"
-      ? {
-          rejectUnauthorized: false,
-        }
-      : false,
+  user: process.env.PGUSER,
+  host: process.env.PHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
+
+if (process.env.NODE_ENV === "development") {
+  pool.options.ssl = false;
+}
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
