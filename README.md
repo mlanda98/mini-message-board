@@ -4,8 +4,8 @@ A simple message board built using Node.js, Express, and EJS, where users can po
 
 ---
 
-🚀 Live Demo
-
+🚀 Demo
+ ![App Demo](dem.gif)
 ---
 
 📌 Features
@@ -24,18 +24,26 @@ A simple message board built using Node.js, Express, and EJS, where users can po
 ---
 
 💻 Run It Locally
-- git clone https://github.com/mlanda98/mini-message-board.git
-- cd mini-message-board
-- npm install
-- configure environment variables in .env file:
+- Clone the repository
+  `git clone https://github.com/mlanda98/mini-message-board.git`
+- Navigate into the project directory
+  `cd mini-message-board`
+- Install dependencies
+  `npm install`
+- configure environment variables in `.env` file:
+
+```
 PGUSER=your_postgres_username
 PHOST=localhost
 PGDATABASE=mini_message_board
 PGPASSWORD=your_postgres_password
 PGPORT=5432
 NODE_ENV=development
-- npm start
-- Open your browser to http://localhost:3000
+```
+
+- Start the server
+  `npm start`
+- Open your browser to `http://localhost:3000`
 
 ---
 
