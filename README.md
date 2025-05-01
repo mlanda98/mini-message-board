@@ -8,7 +8,6 @@ A simple message board built using Node.js, Express, and EJS, where users can po
 
  ![App Demo](dem.gif)
 
-
 ---
 
 📌 Features
